@@ -25,22 +25,19 @@ public class Personas {
 	private String apellido;
 	private Integer edad;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="id_trabajo",referencedColumnName="id")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="personas")
 	private List<Trabajos> trabajo;
 	
-	@OneToOne
-	@JoinColumn(name="id_dirrecion",unique=true)
+	@OneToOne(mappedBy="personas")
 	private Dirrecion dirrecion;
 	
 	@ManyToOne
 	@JoinColumn(name="id_transporte")
 	private Transporte transporte;
 	
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany(mappedBy="personas")
 	private List<Proyectos> proyectos; 
 	
-
 	public Integer getId() {
 		return id;
 	}
@@ -89,6 +86,4 @@ public class Personas {
 	public void setProyectos(List<Proyectos> proyectos) {
 		this.proyectos = proyectos;
 	}
-	
-
 }

@@ -1,11 +1,16 @@
 package com.spring.boot.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="proyectos")
@@ -18,6 +23,10 @@ public class Proyectos {
 	private String nombreProyecto;
 	@Column(name="fecha")
 	private String fechaEntrega;
+	
+	@ManyToMany
+	@JsonIgnore
+	private List<Personas> personas;
 	
 	public Integer getId() {
 		return id;
